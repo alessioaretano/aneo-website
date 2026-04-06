@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aneo Athletics — Bald verfügbar</title>
+  <meta name="description" content="Build for the Whole Journey. Aneo Athletics — coming 2026." />
+  <meta property="og:title" content="Aneo Athletics — Bald verfügbar" />
+  <meta property="og:description" content="Build for the Whole Journey." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#161616" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AABAAEAEBAAAAAAIADjAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAapJREFUeJytk0FrGlEQx2fevFQPbrrQKAVpseCxnlZPEnKQ1S/hgnrxsB9C/A7iQcSDH0NUxEIrdAMm8ZxDQsIiIqZbaGj2vdfTyiapgWDm9B7z/vMffm8GE4mEgj2C7SMGAOC7EkQkwnchBL2qwC7BiwUQUSmlEADAsqxvmUxGAQAsFgvs9/vHT98AAGAYImNMEpFotVo/Xdd9GAwG7xFRFQqFX8lk8p1t24YQgkspt+y2B865L6VklUrl+2q18huNxkk2m93kcrm7ZrN5slwu/1ar1R9SSsY5958VCNoyDOOg1+t9jkQi96ZpfjBN8ygajf7pdrtfDMM4AAAId/AMIhHher0+LBaL8+FweI+IUCqVvPF4/JWIbndCREQFADCbzR7q9fp5PB6ndrudUkqBbdvX6XT61HEcDFgFXTyCyDn3Y7HY706nc5lKpeL5fP4jAMB0Or1xXfeuVqt98jzv0Pf9rTELu+u6vrEs62wymXiO41xpmuZpmubN5/Pb0Wi0KZfLF7qub8IafPNdQESFiCo8ykQkGGMycP0vxCCC7wyP8ktjvfc2/gP7+rZpjHNa8wAAAABJRU5ErkJggg==" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #161616;
+      --cloud:    #F6F6F4;
+      --blue:     #B0C4FF;
+      --sage:     #B0E0CD;
+      --blush:    #F5C0D0;
+      --t1: rgba(246,246,244,1);
+      --t2: rgba(246,246,244,0.45);
+      --t3: rgba(246,246,244,0.22);
+      --t4: rgba(246,246,244,0.10);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--charcoal);
+      color: var(--t1);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── PAGE GRID ──────────────────────────── */
+    .page {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 36px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ─────────────────────────────── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .wordmark strong {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--t1);
+    }
+    .wordmark span {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t2);
+      border: 1px solid rgba(246,246,244,0.14);
+      padding: 7px 16px;
+      border-radius: 100px;
+    }
+
+    /* ── MAIN ───────────────────────────────── */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 0 72px;
+    }
+
+    /* Logo */
+    .logo-img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    /* Brand name */
+    .brand-name {
+      font-size: clamp(80px, 15vw, 156px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 0.88;
+      color: var(--t1);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .brand-athletics {
+      font-size: clamp(10px, 1.8vw, 13px);
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 14px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.3s;
+    }
+
+    .divider {
+      width: 28px;
+      height: 1px;
+      background: var(--t3);
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.34s;
+    }
+
+    /* Slogan — English */
+    .slogan {
+      font-size: clamp(20px, 4.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      color: var(--t1);
+      max-width: 580px;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.38s;
+    }
+
+    /* Subtext — German */
+    .subtext {
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--t2);
+      max-width: 400px;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.46s;
+    }
+
+    /* ── FORM ───────────────────────────────── */
+    .form-wrap {
+      width: 100%;
+      max-width: 460px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.54s;
+    }
+
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .field-input {
+      flex: 1;
+      background: var(--t4);
+      border: 1px solid rgba(246,246,244,0.13);
+      border-radius: 10px;
+      padding: 15px 18px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--t1);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .field-input::placeholder { color: var(--t3); }
+    .field-input:focus {
+      border-color: rgba(176,196,255,0.45);
+      background: rgba(176,196,255,0.06);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--blue);
+      color: var(--charcoal);
+      border: none;
+      border-radius: 10px;
+      padding: 15px 24px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      -webkit-appearance: none;
+    }
+    .submit-btn:hover { opacity: 0.87; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0px); opacity: 0.95; }
+    .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      margin-top: 11px;
+      font-size: 11px;
+      color: var(--t3);
+      letter-spacing: 0.04em;
+    }
+
+    .error-msg {
+      display: none;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--blush);
+    }
+
+    /* Success */
+    .success-wrap {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 24px 20px;
+      background: rgba(176,224,205,0.07);
+      border: 1px solid rgba(176,224,205,0.22);
+      border-radius: 12px;
+    }
+    .success-wrap .check {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(176,224,205,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--sage);
+    }
+    .success-wrap .s-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sage);
+    }
+    .success-wrap .s-sub {
+      font-size: 13px;
+      color: var(--t2);
+    }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.7s;
+    }
+
+    .footer-left {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--t3);
+      letter-spacing: 0.06em;
+      line-height: 1.9;
+    }
+
+    .footer-verse {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--t3);
+      font-style: italic;
+      text-align: right;
+      line-height: 1.9;
+    }
+    .footer-verse b {
+      font-style: normal;
+      font-weight: 500;
+      color: rgba(176,196,255,0.38);
+    }
+
+    /* ── ANIMATIONS ─────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ─────────────────────────────── */
+    @media (max-width: 640px) {
+      .page {
+        padding: 28px 24px;
+        padding-bottom: max(28px, env(safe-area-inset-bottom));
+      }
+
+      .badge { display: none; }
+
+      main { padding: 36px 0 52px; }
+
+      .logo-img { width: 56px; height: 56px; margin-bottom: 28px; }
+
+      .brand-athletics { margin-bottom: 32px; }
+
+      .divider { margin-bottom: 32px; }
+
+      .subtext { margin-bottom: 36px; }
+
+      .input-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        text-align: center;
+      }
+      .footer-verse { text-align: center; }
+    }
+
+    @media (max-width: 380px) {
+      .brand-name { font-size: 68px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="wordmark">
+      <strong>Aneo</strong>
+      <span>Athletics</span>
+    </div>
+    <div class="badge">Bald verfügbar</div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <img
+      class="logo-img"
+      src="data:image/png;base64,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"
+      alt="Aneo Logo"
+      width="72"
+      height="72"
+    />
+
+    <h1 class="brand-name">ANEO</h1>
+    <p class="brand-athletics">Athletics</p>
+
+    <div class="divider"></div>
+
+    <!-- Slogan bleibt Englisch -->
+    <h2 class="slogan">Build for the Whole Journey.</h2>
+
+    <!-- Rest auf Deutsch -->
+    <p class="subtext">
+      Eine neue Running-Brand — gegründet auf Glaube, Disziplin und Ausdauer.<br/>
+      Sei einer der Ersten, der es erfährt.
+    </p>
+
+    <!-- Form -->
+    <div class="form-wrap">
+      <form id="kit-form" novalidate>
+        <div class="form-fields">
+          <div class="input-row">
+            <input
+              class="field-input"
+              type="text"
+              id="first-name"
+              name="first_name"
+              placeholder="Vorname"
+              autocomplete="given-name"
+            />
+            <input
+              class="field-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="E-Mail-Adresse"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <button class="submit-btn" type="submit" id="submit-btn">
+            Beim Launch dabei sein
+          </button>
+        </div>
+        <p class="form-note">Kein Spam. Nur der Launch.</p>
+        <p class="error-msg" id="error-msg"></p>
+      </form>
+
+      <div class="success-wrap" id="success-wrap">
+        <div class="check">✓</div>
+        <p class="s-title">Du bist dabei.</p>
+        <p class="s-sub">Wir melden uns, wenn Aneo an den Start geht.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      Aneo Athletics<br/>
+      Zürich · 2026
+    </div>
+    <div class="footer-verse">
+      „Ich vermag alles durch den, der mich stärkt."<br/>
+      <b>Phil. 4:13</b>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const FORM_ID = '9293737';
+  const API_KEY = 'nbjfB5XKUM6WpFT50yERew';
+
+  const form       = document.getElementById('kit-form');
+  const firstInput = document.getElementById('first-name');
+  const emailInput = document.getElementById('email');
+  const submitBtn  = document.getElementById('submit-btn');
+  const successWrap = document.getElementById('success-wrap');
+  const errorMsg   = document.getElementById('error-msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email     = emailInput.value.trim();
+    const firstName = firstInput.value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('Bitte gib eine gültige E-Mail-Adresse ein.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '…';
+    hideError();
+
+    try {
+      const body = { api_key: API_KEY, email };
+      if (firstName) body.first_name = firstName;
+      body.tags = ['aneo-launch'];
+
+      const res = await fetch(
+        `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }
+      );
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || `Fehler ${res.status}`);
+      }
+
+      form.style.display = 'none';
+      successWrap.style.display = 'flex';
+
+    } catch (err) {
+      console.error('Kit error:', err);
+      showError('Etwas ist schiefgelaufen. Bitte versuche es erneut.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Beim Launch dabei sein';
+    }
+  });
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.style.display = 'block';
+  }
+  function hideError() {
+    errorMsg.style.display = 'none';
+    errorMsg.textContent = '';
+  }
+</script>
+</body>
+</html>
